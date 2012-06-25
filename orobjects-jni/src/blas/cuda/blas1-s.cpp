@@ -17,13 +17,13 @@
  * ***** END LICENSE BLOCK ***** */
 
 
-#include <cblas.h>
+#include <cublas.h>
 #include "com_opsresearch_orobjects_lib_blas_cuda_BLAS1.h"
 
 		JNIEnv *env, jobject, jint n, jfloatArray x, jint begx, jint incx) {
 	jboolean isCopy;
 	jfloat *elems = env->GetFloatArrayElements(x, &isCopy);
-	return (jfloat) cblas_sasum(n, elems + begx, incx);
+	return (jfloat) cublasSasum(n, elems + begx, incx);
 }
 
 		JNIEnv *env, jobject, jint n, jfloat alpha, jfloatArray x, jint begx,
@@ -32,7 +32,7 @@
 	jfloat *xelems = env->GetFloatArrayElements(x, &xisCopy);
 	jboolean yisCopy;
 	jfloat *yelems = env->GetFloatArrayElements(y, &yisCopy);
-	cblas_saxpy(n, alpha, xelems + begx, incx, yelems + begy, incy);
+	cublasSaxpy(n, alpha, xelems + begx, incx, yelems + begy, incy);
 }
 
 		JNIEnv *env, jobject, jint n, jfloatArray x, jint begx, jint incx,
@@ -41,7 +41,7 @@
 	jfloat *xelems = env->GetFloatArrayElements(x, &xisCopy);
 	jboolean yisCopy;
 	jfloat *yelems = env->GetFloatArrayElements(y, &yisCopy);
-	cblas_scopy(n, xelems + begx, incx, yelems + begy, incy);
+	cublasScopy(n, xelems + begx, incx, yelems + begy, incy);
 }
 
 		JNIEnv *env, jobject, jint n, jfloatArray x, jint begx, jint incx,
@@ -50,7 +50,7 @@
 	jfloat *xelems = env->GetFloatArrayElements(x, &xisCopy);
 	jboolean yisCopy;
 	jfloat *yelems = env->GetFloatArrayElements(y, &yisCopy);
-	return (jfloat) cblas_sdot(n, xelems + begx, incx, yelems + begy, incy);
+	return (jfloat) cublasSdot(n, xelems + begx, incx, yelems + begy, incy);
 }
 
 		JNIEnv *env, jobject, jint n, jfloatArray x, jint begx, jint incx,
@@ -59,7 +59,7 @@
 	jfloat *xelems = env->GetFloatArrayElements(x, &xisCopy);
 	jboolean yisCopy;
 	jfloat *yelems = env->GetFloatArrayElements(y, &yisCopy);
-	cblas_srot(n, xelems + begx, incx, yelems + begy, incy, cos, sin);
+	cublasSrot(n, xelems + begx, incx, yelems + begy, incy, cos, sin);
 
 }
 
@@ -67,7 +67,7 @@
 		jint incx) {
 	jboolean isCopy;
 	jfloat *elems = env->GetFloatArrayElements(x, &isCopy);
-	cblas_sscal(n, alpha, elems + begx, incx);
+	cublasSscal(n, alpha, elems + begx, incx);
 }
 
 		JNIEnv *env, jobject, jint n, jfloatArray x, jint begx, jint incx,
@@ -76,19 +76,19 @@
 	jfloat *xelems = env->GetFloatArrayElements(x, &xisCopy);
 	jboolean yisCopy;
 	jfloat *yelems = env->GetFloatArrayElements(y, &yisCopy);
-	cblas_sswap(n, xelems + begx, incx, yelems + begy, incy);
+	cublasSswap(n, xelems + begx, incx, yelems + begy, incy);
 
 }
 
 		JNIEnv *env, jobject, jint n, jfloatArray x, jint begx, jint incx) {
 		jboolean isCopy;
 		jfloat *elems = env->GetFloatArrayElements(x, &isCopy);
-		return (jfloat) cblas_snrm2(n, elems + begx, incx);
+		return (jfloat) cublasSnrm2(n, elems + begx, incx);
 }
 
 		JNIEnv *env, jobject, jint n, jfloatArray x, jint begx, jint incx) {
 		jboolean isCopy;
 		jfloat *elems = env->GetFloatArrayElements(x, &isCopy);
-		return cblas_isamax(n, elems + begx, incx);
+		return cublasIsamax(n, elems + begx, incx);
 }
 

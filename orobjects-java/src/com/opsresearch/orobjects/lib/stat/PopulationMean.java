@@ -18,8 +18,8 @@
 
 package com.opsresearch.orobjects.lib.stat;
 
-import com.opsresearch.orobjects.lib.prob.StudentsTDistribution;
-import com.opsresearch.orobjects.lib.prob.StudentsTDistributionI;
+import com.opsresearch.orobjects.lib.prob.continuous.StudentsTDistribution;
+import com.opsresearch.orobjects.lib.prob.continuous.StudentsTDistributionI;
 import com.opsresearch.orobjects.lib.real.matrix.VectorI;
 
 

@@ -16,27 +16,31 @@
  * 
  * ***** END LICENSE BLOCK ***** */
 
+package com.opsresearch.orobjects.lib.stat.survival;
 
-#include <cublas.h>
-#include "com_opsresearch_orobjects_lib_blas_cuda_BLAS2.h"
+public class Survivals {
 
-		JNIEnv *, jobject, jint, jint, jint, jdouble, jdoubleArray, jint, jint,
-		jint, jdoubleArray, jint, jint, jint, jdouble, jdoubleArray, jint, jint,
-		jint) {
+	ProportionalHazardsI proportionalHazards;
+	SurvivorFunctionI survivalFunction;
+
+	public ProportionalHazardsI getProportionalHazards() {
+		if (proportionalHazards == null)
+			proportionalHazards = new CoxModel();
+		return proportionalHazards;
+	}
+
+	public void setProportionalHazards(ProportionalHazardsI proportionalHazards) {
+		this.proportionalHazards = proportionalHazards;
+	}
+
+	public SurvivorFunctionI getSurvivorFunction() {
+		if (survivalFunction == null)
+			survivalFunction = new KaplanMeier();
+		return survivalFunction;
+	}
+
+	public void setSurvivorFunction(SurvivorFunctionI survivalFunction) {
+		this.survivalFunction = survivalFunction;
+	}
+
 }
-
-		JNIEnv *, jobject, jint, jint, jint, jfloat, jfloatArray, jint, jint,
-		jint, jfloatArray, jint, jint, jint, jfloat, jfloatArray, jint, jint,
-		jint) {
-}
-
-		JNIEnv *, jobject, jint, jint, jint, jdouble, jdouble, jdoubleArray,
-		jint, jint, jint, jdoubleArray, jint, jint, jint, jdouble, jdouble,
-		jdoubleArray, jint, jint, jint) {
-}
-
-		JNIEnv *, jobject, jint, jint, jint, jfloat, jfloat, jfloatArray, jint,
-		jint, jint, jfloatArray, jint, jint, jint, jfloat, jfloat, jfloatArray,
-		jint, jint, jint) {
-}
-

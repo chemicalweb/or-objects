@@ -16,27 +16,27 @@
  * 
  * ***** END LICENSE BLOCK ***** */
 
+package com.opsresearch.orobjects.lib.prob.continuous;
 
-#include <cublas.h>
-#include "com_opsresearch_orobjects_lib_blas_cuda_BLAS2.h"
+import com.opsresearch.orobjects.lib.prob.DistributionI;
 
-		JNIEnv *, jobject, jint, jint, jint, jdouble, jdoubleArray, jint, jint,
-		jint, jdoubleArray, jint, jint, jint, jdouble, jdoubleArray, jint, jint,
-		jint) {
+public interface ContinuousDistributionI extends DistributionI{
+
+	public void setVariableBounds(double min, double max);
+
+	public double getRandomDouble();
+
+	public double pdf(double x);
+
+	public double cdf(double x);
+
+	public double inverseCdf(double probability);
+
+	public double probability(double x1, double x2);
+
+	public double getCdfMin();
+	public double getCdfMax();
+	public double getVariableMin();
+	public double getVariableMax();
+	
 }
-
-		JNIEnv *, jobject, jint, jint, jint, jfloat, jfloatArray, jint, jint,
-		jint, jfloatArray, jint, jint, jint, jfloat, jfloatArray, jint, jint,
-		jint) {
-}
-
-		JNIEnv *, jobject, jint, jint, jint, jdouble, jdouble, jdoubleArray,
-		jint, jint, jint, jdoubleArray, jint, jint, jint, jdouble, jdouble,
-		jdoubleArray, jint, jint, jint) {
-}
-
-		JNIEnv *, jobject, jint, jint, jint, jfloat, jfloat, jfloatArray, jint,
-		jint, jint, jfloatArray, jint, jint, jint, jfloat, jfloat, jfloatArray,
-		jint, jint, jint) {
-}
-

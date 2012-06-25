@@ -17,7 +17,7 @@
  * ***** END LICENSE BLOCK ***** */
 
 
-#include <cblas.h>
+#include <cublas.h>
 #include "com_opsresearch_orobjects_lib_blas_cuda_BLAS2.h"
 
 		JNIEnv *env, jobject, jint m, jint n, jdouble alpha, jdoubleArray A, jint begA, jint incA, jint incAj,

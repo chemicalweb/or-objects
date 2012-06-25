@@ -16,27 +16,11 @@
  * 
  * ***** END LICENSE BLOCK ***** */
 
+package com.opsresearch.orobjects.lib.prob.continuous;
 
-#include <cublas.h>
-#include "com_opsresearch_orobjects_lib_blas_cuda_BLAS2.h"
+import com.opsresearch.orobjects.lib.real.matrix.VectorI;
 
-		JNIEnv *, jobject, jint, jint, jint, jdouble, jdoubleArray, jint, jint,
-		jint, jdoubleArray, jint, jint, jint, jdouble, jdoubleArray, jint, jint,
-		jint) {
+public interface EmpiricalDistributionI extends ContinuousDistributionI {
+	public void setCdfStart(double start);
+	public void setParameters(VectorI x, VectorI probability);
 }
-
-		JNIEnv *, jobject, jint, jint, jint, jfloat, jfloatArray, jint, jint,
-		jint, jfloatArray, jint, jint, jint, jfloat, jfloatArray, jint, jint,
-		jint) {
-}
-
-		JNIEnv *, jobject, jint, jint, jint, jdouble, jdouble, jdoubleArray,
-		jint, jint, jint, jdoubleArray, jint, jint, jint, jdouble, jdouble,
-		jdoubleArray, jint, jint, jint) {
-}
-
-		JNIEnv *, jobject, jint, jint, jint, jfloat, jfloat, jfloatArray, jint,
-		jint, jint, jfloatArray, jint, jint, jint, jfloat, jfloat, jfloatArray,
-		jint, jint, jint) {
-}
-

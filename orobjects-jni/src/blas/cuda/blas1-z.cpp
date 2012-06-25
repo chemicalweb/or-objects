@@ -17,74 +17,78 @@
  * ***** END LICENSE BLOCK ***** */
 
 
-#include <cblas.h>
+#include <cublas.h>
 #include "com_opsresearch_orobjects_lib_blas_cuda_BLAS1.h"
 
 		JNIEnv *env, jobject, jint n, jdoubleArray x, jint begx, jint incx) {
 		jboolean isCopy;
-		jdouble *elems = env->GetDoubleArrayElements(x, &isCopy);
-		return (jdouble) cblas_dzasum(n, elems + (begx >> 1), incx);
+		cuDoubleComplex *elems = (cuDoubleComplex*)env->GetDoubleArrayElements(x, &isCopy);
+		return (jdouble) cublasDzasum(n, elems + begx, incx);
 }
 
 		JNIEnv *env, jobject, jint n, jdouble real, jdouble imag, jdoubleArray x, jint begx, jint incx,
 		jdoubleArray y, jint begy, jint incy) {
 		jboolean xisCopy;
-		jdouble *xelems = env->GetDoubleArrayElements(x, &xisCopy);
+		cuDoubleComplex *xelems = (cuDoubleComplex*)env->GetDoubleArrayElements(x, &xisCopy);
 		jboolean yisCopy;
-		jdouble *yelems = env->GetDoubleArrayElements(y, &yisCopy);
-		double alpha[2];
-		alpha[0] = real;
-		alpha[1] = imag;
-		cblas_zaxpy(n, alpha, xelems + (begx >> 1), incx, yelems + (begy >> 1), incy);
+		cuDoubleComplex *yelems = (cuDoubleComplex*)env->GetDoubleArrayElements(y, &yisCopy);
+		cuDoubleComplex alpha;
+		alpha.x = real;
+		alpha.y = imag;
+		cublasZaxpy(n, alpha, xelems + begx, incx, yelems + begy, incy);
 }
 
 		JNIEnv *env, jobject, jint n, jdoubleArray x, jint begx, jint incx, jdoubleArray y, jint begy,
 		jint incy) {
 		jboolean xisCopy;
-		jdouble *xelems = env->GetDoubleArrayElements(x, &xisCopy);
+		cuDoubleComplex *xelems = (cuDoubleComplex*)env->GetDoubleArrayElements(x, &xisCopy);
 		jboolean yisCopy;
-		jdouble *yelems = env->GetDoubleArrayElements(y, &yisCopy);
-		cblas_zcopy(n, xelems + (begx >> 1), incx, yelems + (begy >> 1), incy);
+		cuDoubleComplex *yelems = (cuDoubleComplex*)env->GetDoubleArrayElements(y, &yisCopy);
+		cublasZcopy(n, xelems + begx, incx, yelems + begy, incy);
 }
 
 		JNIEnv *env, jobject, jint n, jdoubleArray x, jint begx, jint incx, jdoubleArray y, jint begy,
 		jint incy, jdoubleArray rslt) {
 		jboolean xisCopy;
-		jdouble *xelems = env->GetDoubleArrayElements(x, &xisCopy);
+		cuDoubleComplex *xelems = (cuDoubleComplex*)env->GetDoubleArrayElements(x, &xisCopy);
 		jboolean yisCopy;
-		jdouble *yelems = env->GetDoubleArrayElements(y, &yisCopy);
+		cuDoubleComplex *yelems = (cuDoubleComplex*)env->GetDoubleArrayElements(y, &yisCopy);
 		jboolean risCopy;
 		jdouble *relems = env->GetDoubleArrayElements(rslt, &risCopy);
-		cblas_zdotu_sub(n, xelems + (begx >> 1), incx, yelems + (begy >> 1), incy, relems);
+		cuDoubleComplex val = cublasZdotu(n, xelems + begx, incx, yelems + begy, incy);
+		relems[0] = val.x;
+		relems[1] = val.y;
 }
 
 		JNIEnv *env, jobject, jint n, jdoubleArray x, jint begx, jint incx, jdoubleArray y, jint begy,
 		jint incy, jdoubleArray rslt) {
 		jboolean xisCopy;
-		jdouble *xelems = env->GetDoubleArrayElements(x, &xisCopy);
+		cuDoubleComplex *xelems = (cuDoubleComplex*)env->GetDoubleArrayElements(x, &xisCopy);
 		jboolean yisCopy;
-		jdouble *yelems = env->GetDoubleArrayElements(y, &yisCopy);
+		cuDoubleComplex *yelems = (cuDoubleComplex*)env->GetDoubleArrayElements(y, &yisCopy);
 		jboolean risCopy;
 		jdouble *relems = env->GetDoubleArrayElements(rslt, &risCopy);
-		cblas_zdotc_sub(n, xelems + (begx >> 1), incx, yelems + (begy >> 1), incy, relems);
+		cuDoubleComplex val = cublasZdotc(n, xelems + begx, incx, yelems + begy, incy);
+		relems[0] = val.x;
+		relems[1] = val.y;
 }
 
 			JNIEnv *env, jobject, jint n, jdouble real, jdouble imag, jdoubleArray x, jint begx, jint incx,
 			jdoubleArray y, jint begy, jint incy) {
 			jboolean xisCopy;
-			jdouble *xelems = env->GetDoubleArrayElements(x, &xisCopy);
-			double alpha[2];
-			alpha[0] = real;
-			alpha[1] = imag;
-			cblas_zscal(n, alpha, xelems + (begx >> 1), incx);
+			cuDoubleComplex *xelems = (cuDoubleComplex*)env->GetDoubleArrayElements(x, &xisCopy);
+			cuDoubleComplex alpha;
+			alpha.x = real;
+			alpha.y = imag;
+			cublasZscal(n, alpha, xelems + begx, incx);
 }
 
 			JNIEnv *env, jobject, jint n, jdoubleArray x, jint begx, jint incx, jdoubleArray y, jint begy,
 			jint incy) {
 			jboolean xisCopy;
-			jdouble *xelems = env->GetDoubleArrayElements(x, &xisCopy);
+			cuDoubleComplex *xelems = (cuDoubleComplex*)env->GetDoubleArrayElements(x, &xisCopy);
 			jboolean yisCopy;
-			jdouble *yelems = env->GetDoubleArrayElements(y, &yisCopy);
-			cblas_zswap(n, xelems + (begx >> 1), incx, yelems + (begy >> 1), incy);
+			cuDoubleComplex *yelems = (cuDoubleComplex*)env->GetDoubleArrayElements(y, &yisCopy);
+			cublasZswap(n, xelems + begx, incx, yelems + begy, incy);
 
 }

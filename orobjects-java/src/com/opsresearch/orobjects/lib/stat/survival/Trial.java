@@ -16,27 +16,37 @@
  * 
  * ***** END LICENSE BLOCK ***** */
 
+package com.opsresearch.orobjects.lib.stat.survival;
 
-#include <cublas.h>
-#include "com_opsresearch_orobjects_lib_blas_cuda_BLAS2.h"
+import java.util.Arrays;
 
-		JNIEnv *, jobject, jint, jint, jint, jdouble, jdoubleArray, jint, jint,
-		jint, jdoubleArray, jint, jint, jint, jdouble, jdoubleArray, jint, jint,
-		jint) {
+public class Trial {
+
+	private int numberAtRisk;
+	private Sample[] samples;
+
+	public Trial() {
+		this(new Delegates());
+	}
+
+	public Trial(Delegates delegates) {
+	}
+
+	
+	public Sample[] getSamples() {
+		return samples;
+	}
+
+	
+	public void setSamples(int numberAtRisk, Sample[] samples) {
+		this.samples = samples.clone();
+		this.numberAtRisk = numberAtRisk;
+		Arrays.sort(this.samples);
+	}
+
+	
+	public int getNumberAtRisk() {
+		return numberAtRisk;
+	}
+
 }
-
-		JNIEnv *, jobject, jint, jint, jint, jfloat, jfloatArray, jint, jint,
-		jint, jfloatArray, jint, jint, jint, jfloat, jfloatArray, jint, jint,
-		jint) {
-}
-
-		JNIEnv *, jobject, jint, jint, jint, jdouble, jdouble, jdoubleArray,
-		jint, jint, jint, jdoubleArray, jint, jint, jint, jdouble, jdouble,
-		jdoubleArray, jint, jint, jint) {
-}
-
-		JNIEnv *, jobject, jint, jint, jint, jfloat, jfloat, jfloatArray, jint,
-		jint, jint, jfloatArray, jint, jint, jint, jfloat, jfloat, jfloatArray,
-		jint, jint, jint) {
-}
-

@@ -18,117 +18,152 @@
 
 package com.opsresearch.orobjects.lib.prob;
 
+import com.opsresearch.orobjects.lib.prob.continuous.ChiSquareDistribution;
+import com.opsresearch.orobjects.lib.prob.continuous.ChiSquareDistributionI;
+import com.opsresearch.orobjects.lib.prob.continuous.EmpiricalDistribution;
+import com.opsresearch.orobjects.lib.prob.continuous.EmpiricalDistributionI;
+import com.opsresearch.orobjects.lib.prob.continuous.ExponentialDistribution;
+import com.opsresearch.orobjects.lib.prob.continuous.ExponentialDistributionI;
+import com.opsresearch.orobjects.lib.prob.continuous.FDistribution;
+import com.opsresearch.orobjects.lib.prob.continuous.FDistributionI;
+import com.opsresearch.orobjects.lib.prob.continuous.NormalDistribution;
+import com.opsresearch.orobjects.lib.prob.continuous.NormalDistributionI;
+import com.opsresearch.orobjects.lib.prob.continuous.StudentsTDistribution;
+import com.opsresearch.orobjects.lib.prob.continuous.StudentsTDistributionI;
+import com.opsresearch.orobjects.lib.prob.continuous.UniformDistribution;
+import com.opsresearch.orobjects.lib.prob.continuous.UniformDistributionI;
+import com.opsresearch.orobjects.lib.prob.discrete.BinomialDistribution;
+import com.opsresearch.orobjects.lib.prob.discrete.BinomialDistributionI;
+import com.opsresearch.orobjects.lib.prob.discrete.DiscreteEmpiricalDistribution;
+import com.opsresearch.orobjects.lib.prob.discrete.DiscreteEmpiricalDistributionI;
+import com.opsresearch.orobjects.lib.prob.discrete.DiscreteUniformDistribution;
+import com.opsresearch.orobjects.lib.prob.discrete.DiscreteUniformDistributionI;
+import com.opsresearch.orobjects.lib.prob.discrete.PoissonDistribution;
+import com.opsresearch.orobjects.lib.prob.discrete.PoissonDistributionI;
+
 public class Distributions {
 
-	private BinomialDistributionI _binomialDistribution;
-	private ChiSquareDistributionI _chiSquareDistribution;
-	private DiscreteUniformDistributionI _discreteUniformDistribution;
-	private EmpiricalDistributionI _empiricalDistribution;
-	private ExponentialDistributionI _exponentialDistribution;
-	private FDistributionI _fDistribution;
-	private NormalDistributionI _normalDistribution;
-	private PoissonDistributionI _poissonDistribution;
-	private StudentsTDistributionI _studentsTDistribution;
-	private UniformDistributionI _uniformDistribution;
+	private ChiSquareDistributionI chiSquareDistribution;
+	private EmpiricalDistributionI empiricalDistribution;
+	private ExponentialDistributionI exponentialDistribution;
+	private FDistributionI fDistribution;
+	private NormalDistributionI normalDistribution;
+	private StudentsTDistributionI studentsTDistribution;
+	private UniformDistributionI uniformDistribution;
+
+	private DiscreteUniformDistributionI discreteUniformDistribution;
+	private DiscreteEmpiricalDistributionI discreteEmpiricalDistribution;
+	private PoissonDistributionI poissonDistribution;
+	private BinomialDistributionI binomialDistribution;	
 
 	public BinomialDistributionI getBinomialDistribution() {
-		if (_binomialDistribution == null)
-			_binomialDistribution = new BinomialDistribution();
-		return _binomialDistribution;
+		if (binomialDistribution == null)
+			binomialDistribution = new BinomialDistribution();
+		return binomialDistribution;
 	}
 
 	public void setBinomialDistribution(BinomialDistributionI binomialDistribution) {
-		this._binomialDistribution = binomialDistribution;
+		this.binomialDistribution = binomialDistribution;
 	}
 
 	public ChiSquareDistributionI getChiSquareDistribution() {
-		if (_chiSquareDistribution == null)
-			_chiSquareDistribution = new ChiSquareDistribution();
-		return _chiSquareDistribution;
+		if (chiSquareDistribution == null)
+			chiSquareDistribution = new ChiSquareDistribution();
+		return chiSquareDistribution;
 	}
 
 	public void setChiSquareDistribution(ChiSquareDistributionI chiSquareDistribution) {
-		this._chiSquareDistribution = chiSquareDistribution;
+		this.chiSquareDistribution = chiSquareDistribution;
 	}
 
 	public DiscreteUniformDistributionI getDiscreteUniformDistribution() {
-		if (_discreteUniformDistribution == null)
-			_discreteUniformDistribution = new DiscreteUniformDistribution();
-		return _discreteUniformDistribution;
+		if (discreteUniformDistribution == null)
+			discreteUniformDistribution = new DiscreteUniformDistribution();
+		return discreteUniformDistribution;
 	}
 
 	public void setDiscreteUniformDistribution(DiscreteUniformDistributionI discreteUniformDistribution) {
-		this._discreteUniformDistribution = discreteUniformDistribution;
+		this.discreteUniformDistribution = discreteUniformDistribution;
 	}
 
 	public EmpiricalDistributionI getEmpiricalDistribution() {
-		if (_empiricalDistribution == null)
-			_empiricalDistribution = new EmpiricalDistribution();
-		return _empiricalDistribution;
+		if (empiricalDistribution == null)
+			empiricalDistribution = new EmpiricalDistribution();
+		return empiricalDistribution;
 	}
 
 	public void setEmpiricalDistribution(EmpiricalDistributionI empiricalDistribution) {
-		this._empiricalDistribution = empiricalDistribution;
+		this.empiricalDistribution = empiricalDistribution;
+	}
+	
+	public DiscreteEmpiricalDistributionI getDiscreteEmpiricalDistribution() {
+		if (discreteEmpiricalDistribution == null)
+			discreteEmpiricalDistribution = new DiscreteEmpiricalDistribution();
+		return discreteEmpiricalDistribution;
+	}
+	
+	public void setDiscreteEmpiricalDistribution(DiscreteEmpiricalDistributionI discreteEmpiricalDistribution) {
+		this.discreteEmpiricalDistribution = discreteEmpiricalDistribution;
 	}
 
 	public ExponentialDistributionI getExponentialDistribution() {
-		if (_exponentialDistribution == null)
-			_exponentialDistribution = new ExponentialDistribution();
-		return _exponentialDistribution;
+		if (exponentialDistribution == null)
+			exponentialDistribution = new ExponentialDistribution();
+		return exponentialDistribution;
 	}
 
 	public void setExponentialDistribution(ExponentialDistributionI exponentialDistribution) {
-		this._exponentialDistribution = exponentialDistribution;
+		this.exponentialDistribution = exponentialDistribution;
 	}
 
 	public FDistributionI getFDistribution() {
-		if (_fDistribution == null)
-			_fDistribution = new FDistribution();
-		return _fDistribution;
+		if (fDistribution == null)
+			fDistribution = new FDistribution();
+		return fDistribution;
 	}
 
 	public void setFDistribution(FDistributionI fDistribution) {
-		this._fDistribution = fDistribution;
+		this.fDistribution = fDistribution;
 	}
 
 	public NormalDistributionI getNormalDistribution() {
-		if (_normalDistribution == null)
-			_normalDistribution = new NormalDistribution();
-		return _normalDistribution;
+		if (normalDistribution == null)
+			normalDistribution = new NormalDistribution();
+		return normalDistribution;
 	}
 
 	public void setNormalDistribution(NormalDistributionI normalDistribution) {
-		this._normalDistribution = normalDistribution;
+		this.normalDistribution = normalDistribution;
 	}
 
 	public PoissonDistributionI getPoissonDistribution() {
-		if (_poissonDistribution == null)
-			_poissonDistribution = new PoissonDistribution();
-		return _poissonDistribution;
+		if (poissonDistribution == null)
+			poissonDistribution = new PoissonDistribution();
+		return poissonDistribution;
 	}
 
 	public void setPoissonDistribution(PoissonDistributionI poissonDistribution) {
-		this._poissonDistribution = poissonDistribution;
+		this.poissonDistribution = poissonDistribution;
 	}
 
 	public StudentsTDistributionI getStudentsTDistribution() {
-		if (_studentsTDistribution == null)
-			_studentsTDistribution = new StudentsTDistribution();
-		return _studentsTDistribution;
+		if (studentsTDistribution == null)
+			studentsTDistribution = new StudentsTDistribution();
+		return studentsTDistribution;
 	}
 
 	public void setStudentsTDistribution(StudentsTDistributionI studentsTDistribution) {
-		this._studentsTDistribution = studentsTDistribution;
+		this.studentsTDistribution = studentsTDistribution;
 	}
 
 	public UniformDistributionI getUniformDistribution() {
-		if (_uniformDistribution == null)
-			_uniformDistribution = new UniformDistribution();
-		return _uniformDistribution;
+		if (uniformDistribution == null)
+			uniformDistribution = new UniformDistribution();
+		return uniformDistribution;
 	}
 
 	public void setUniformDistribution(UniformDistributionI uniformDistribution) {
-		this._uniformDistribution = uniformDistribution;
+		this.uniformDistribution = uniformDistribution;
 	}
 
 }

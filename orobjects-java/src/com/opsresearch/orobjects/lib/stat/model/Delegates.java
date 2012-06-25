@@ -21,22 +21,39 @@ package com.opsresearch.orobjects.lib.stat.model;
 import com.opsresearch.orobjects.lib.algebra.Algebras;
 import com.opsresearch.orobjects.lib.algebra.LUDecompositionI;
 import com.opsresearch.orobjects.lib.algebra.SVDecompositionI;
-import com.opsresearch.orobjects.lib.prob.BinomialDistributionI;
-import com.opsresearch.orobjects.lib.prob.ChiSquareDistributionI;
-import com.opsresearch.orobjects.lib.prob.DiscreteUniformDistributionI;
 import com.opsresearch.orobjects.lib.prob.Distributions;
-import com.opsresearch.orobjects.lib.prob.EmpiricalDistributionI;
-import com.opsresearch.orobjects.lib.prob.ExponentialDistributionI;
-import com.opsresearch.orobjects.lib.prob.FDistributionI;
-import com.opsresearch.orobjects.lib.prob.NormalDistributionI;
-import com.opsresearch.orobjects.lib.prob.PoissonDistributionI;
-import com.opsresearch.orobjects.lib.prob.StudentsTDistributionI;
-import com.opsresearch.orobjects.lib.prob.UniformDistributionI;
+import com.opsresearch.orobjects.lib.prob.continuous.ChiSquareDistributionI;
+import com.opsresearch.orobjects.lib.prob.continuous.EmpiricalDistributionI;
+import com.opsresearch.orobjects.lib.prob.continuous.ExponentialDistributionI;
+import com.opsresearch.orobjects.lib.prob.continuous.FDistributionI;
+import com.opsresearch.orobjects.lib.prob.continuous.NormalDistributionI;
+import com.opsresearch.orobjects.lib.prob.continuous.StudentsTDistributionI;
+import com.opsresearch.orobjects.lib.prob.continuous.UniformDistributionI;
+import com.opsresearch.orobjects.lib.prob.discrete.BinomialDistributionI;
+import com.opsresearch.orobjects.lib.prob.discrete.DiscreteEmpiricalDistributionI;
+import com.opsresearch.orobjects.lib.prob.discrete.DiscreteUniformDistributionI;
+import com.opsresearch.orobjects.lib.prob.discrete.PoissonDistributionI;
 import com.opsresearch.orobjects.lib.real.approx.Approximation;
-
 
 public class Delegates {
 	private Distributions _distributions = new Distributions();
+
+	public DiscreteEmpiricalDistributionI getDiscreteEmpiricalDistribution() {
+		return _distributions.getDiscreteEmpiricalDistribution();
+	}
+
+	public void setDiscreteEmpiricalDistribution(DiscreteEmpiricalDistributionI discreteEmpiricalDistribution) {
+		_distributions.setDiscreteEmpiricalDistribution(discreteEmpiricalDistribution);
+	}
+
+	public EmpiricalDistributionI getEmpiricalDistribution() {
+		return _distributions.getEmpiricalDistribution();
+	}
+
+	public void setEmpiricalDistribution(EmpiricalDistributionI empiricalDistribution) {
+		_distributions.setEmpiricalDistribution(empiricalDistribution);
+	}
+
 	private Algebras _algebras = new Algebras();
 	private Models _models = new Models();
 	private Approximation _approximation = new Approximation();
@@ -155,14 +172,6 @@ public class Delegates {
 
 	public void setDiscreteUniformDistribution(DiscreteUniformDistributionI discreteUniformDistribution) {
 		_distributions.setDiscreteUniformDistribution(discreteUniformDistribution);
-	}
-
-	public EmpiricalDistributionI getEmpiricalDistribution() {
-		return _distributions.getEmpiricalDistribution();
-	}
-
-	public void setEmpiricalDistribution(EmpiricalDistributionI empiricalDistribution) {
-		_distributions.setEmpiricalDistribution(empiricalDistribution);
 	}
 
 	public ExponentialDistributionI getExponentialDistribution() {
